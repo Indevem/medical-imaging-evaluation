@@ -12,7 +12,10 @@ class Evaluator:
     def _evaluate_2d(self, predicted: tp.List[np.ndarray], expert: tp.List[np.ndarray]) -> tp.Dict[str, np.ndarray]:
         pass
 
-    def evaluate(self, predicted: tp.List[np.ndarray], expert: tp.List[np.ndarray],
-                 data: tp.List[np.ndarray] = None) -> tp.Dict[str, np.ndarray]:
+    def fit(self, predicted: tp.List[np.ndarray], expert: tp.List[np.ndarray],
+                 data: tp.List[np.ndarray] = None) -> None:
+        pass
+
+    def evaluate(self) -> tp.Dict[str, np.ndarray]:
 
         return {'metric1': np.zeros(len(predicted)), 'metric2': np.array(list(range(len(predicted))))}
