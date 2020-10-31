@@ -1,32 +1,80 @@
+import cv2
+import joblib
+import numpy as np
+import pandas as pd
 import typing as tp
 
-import numpy as np
+from sklearn.base import BaseEstimator, ClassifierMixin
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestRegressor, VotingClassifier
+from sklearn.svm import SVC
+
+from model.metrics.metrics_wrapper import Metrics
+
+
+# class RoundClassifier(BaseEstimator, ClassifierMixin):
+#     """
+#     Округление предсказаний модели до целых чисел.
+#     """
+#     def __init__(self, model, round_model=True):
+#         self.model = model
+#         self.round_model = round_model
+#
+#     def fit(self, X, y):
+#         self.model.fit(X, y)
+#         return self
+#
+#     def predict(self, X):
+#         pred = self.model.predict(X)
+#         if self.round_model:
+#             pred = np.round(pred, 0).astype(int)
+#         return pred
 
 
 class Evaluator:
 
-    #metrics = {
-     #   'standard_avg': standard_distance_avg, 'standard_max': standard_distance_max,
-     #   'symmetric_avg': symmetric_distance_avg, 'symmetric_max': symmetric_distance_max,
-     #   'voe': volume_overlap_error, 'rvd': relative_volume_difference,
-     #   'dice': dice_coefficient, 'hausdorff': hausdorff_distance
-    #}
-
     def __init__(self):
-        pass
+        self.scaler = joblib.load('scaler_dump.pkl')
+        self.model = joblib.load('model_dump.pkl')
 
-    def _evaluate_3d(self) -> tp.Dict[str, np.ndarray]:
-        pass
+    def _compute_metrics(ex, pred):
+        """
+        Подсчёт значения метрик для двух изображений -- экспертной и оцениваемой разметок.
+        Метрики: на основе расстояний, на основе объёма множеств и на основе расположения геометрических фигур (опционально).
+        """
+        result = []
+        num_metrics = 12
 
-    def _evaluate_2d(self) -> tp.Dict[str, np.ndarray]:
-        pass
+        result.append(ex.sum() / 255)
+        result.append(pred.sum() / 255)
+
+        if ex.sum() == 0 and pred.sum() == 0:
+            return result + [0] * num_metrics
+        elif ex.sum() == 0 or pred.sum() == 0:
+            return result + [np.NaN] * num_metrics
+
+        metrics = Metrics(ex, pred)
+        result = metrics.compute_all()
+
+        return result
+
+    def _make_dataframe(self):
+        """
+        Создание pd.DataFrame из метрик, рассчитанных для каждой пары объектов из выборок expert и predicted.
+        """
+        data = []
+        for i in range(len(self.expert)):
+            data.append(np.array(self._compute_metrics(self.expert[i], self.predicted[i])))
+        return pd.DataFrame(data)
 
     def fit(self, predicted: tp.List[np.ndarray], expert: tp.List[np.ndarray],
-                 data: tp.List[np.ndarray] = None) -> None:
-        pass
+            data: tp.List[np.ndarray] = None) -> None:
+        self.predicted = predicted
+        self.expert = expert
+        self.data = data # необходимо для пока не реализованного классификатора данных
 
-    def evaluate(self, metrics: tp.List[str] = []):# -> tp.List[int]:
-
-        #return {'metric1': np.zeros(len(predicted)), 'metric2': np.array(list(range(len(predicted))))}
-        
-        return np.zeros(4)
+    def evaluate(self, metrics: tp.List[str] = []) -> np.ndarray:
+        X = self._make_dataframe().fillna(-1).to_numpy()
+        X = self.scaler.transform(X)
+        return model.predict(X)
