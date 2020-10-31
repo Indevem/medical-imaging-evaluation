@@ -32,17 +32,19 @@
 </p>
 
 - Volume overlap error
-```math
-VOE=100\times\left(1-\frac{|X\cap Y|}{|X|+|Y|}\right)
-```
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.latex?VOE=100\times\left(1-\frac{|X\cap%20Y|}{|X|+|Y|}\right)" /> 
+</p>
+
 - Relative volume difference
-```math
-RVD = 100\times{|X|-|Y|}{|Y|}
-```
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.latex?RVD%20=%20100\times\frac{|X|-|Y|}{|Y|}" /> 
+</p>
+
 - Dice coefficient
-```math
-DICE = \frac{2|X\cap Y|}{|X|+|Y|}
-```
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.latex?\frac{2|X\cap%20Y|}{|X|+|Y|}" /> 
+</p>
 - Метрика Хаусдорфа
 
 и их модификации.
