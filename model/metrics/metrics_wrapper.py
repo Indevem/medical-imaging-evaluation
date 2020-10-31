@@ -3,7 +3,7 @@ from os.path import join
 import cv2
 import numpy as np
 
-from model.metrics import metrics_processor
+import metrics_processor
 
 
 class Metrics:

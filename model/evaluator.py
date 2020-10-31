@@ -10,7 +10,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
-from model.metrics.metrics_wrapper import Metrics
+from metrics.metrics_wrapper import Metrics
 
 
 class RoundClassifier(BaseEstimator, ClassifierMixin):
