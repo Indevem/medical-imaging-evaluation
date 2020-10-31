@@ -44,13 +44,32 @@ class Shape:
 def get_aggregated_min_center_distance(shapes_from: List[Shape], shapes_to: List[Shape],
                                        distance_function: Callable = distance.euclidean,
                                        aggregation_function: Callable = np.mean) -> float:
+    if len(shape_from) == 0 and len(shape_to) == 0:
+        return 0
+    if len(shape_from) == 0 or len(shape_to) == 0:
+        return np.NaN
+
     return aggregation_function(
         [min(distance_function(shape_from.coordinates, shape_to.coordinates) for shape_to in shapes_to)
          for shape_from in shapes_from])
 
 
 def get_rectangle_area_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> float:
+    if len(shape_from) == 0 and len(shape_to) == 0:
+        return 0
+    if len(shape_from) == 0 or len(shape_to) == 0:
+        return np.NaN
+
     return sum(i.area for i in shapes_1) / sum(i.area for i in shapes_2)
+
+
+def get_shapes_count_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> float:
+    if len(shape_from) == 0 and len(shape_to) == 0:
+        return 0
+    if len(shape_from) == 0 or len(shape_to) == 0:
+        return np.NaN
+
+    return len(shapes_1) / len(shapes_2)
 
 
 class TableMetricsCalculator:
