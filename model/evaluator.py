@@ -27,4 +27,5 @@ class Evaluator:
     def evaluate(self, metrics: tp.List[str] = []):# -> tp.List[int]:
 
         #return {'metric1': np.zeros(len(predicted)), 'metric2': np.array(list(range(len(predicted))))}
-        return {[1, 2, 3, 4]}
+        
+        return np.zeros(4)
