@@ -45,6 +45,7 @@
 <p align="center">
   <img src="https://latex.codecogs.com/svg.latex?\frac{2|X\cap%20Y|}{|X|+|Y|}" /> 
 </p>
+
 - Метрика Хаусдорфа
 
 и их модификации.
