@@ -20,10 +20,13 @@
       <x>50</x>
       <y>0</y>
       <width>351</width>
-      <height>134</height>
+      <height>162</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="3" column="2">
+      <widget class="QLineEdit" name="path_expert_line"/>
+     </item>
      <item row="3" column="4">
       <widget class="QPushButton" name="explore_path_expert">
        <property name="text">
@@ -53,6 +56,13 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item row="5" column="4">
+      <widget class="QPushButton" name="evaluate_button">
+       <property name="text">
+        <string>Оценить разметку</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="1">
       <spacer name="horizontalSpacer">
@@ -94,15 +104,21 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="4">
-      <widget class="QPushButton" name="evaluate_button">
-       <property name="text">
-        <string>Оценить разметку</string>
+     <item row="4" column="2">
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
-      </widget>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
      </item>
-     <item row="3" column="2">
-      <widget class="QLineEdit" name="path_expert_line"/>
+     <item row="5" column="2">
+      <widget class="QTableWidget" name="resalts_table"/>
      </item>
     </layout>
    </widget>
