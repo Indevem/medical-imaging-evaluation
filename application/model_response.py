@@ -15,7 +15,7 @@ class ModelResponse(QThread):
     для выполнения в отдельный поток.
     
     """
-    TR = pyqtSignal(dict, name = "throw_resalts")
+    TR = pyqtSignal(dict, name="throw_results")
     
     def __init__(self, list1, list2):
         """Конструктор класса. 
@@ -37,6 +37,6 @@ class ModelResponse(QThread):
         evaluator = Evaluator()   
         evaluator.fit(self.list1, self.list2)
         results = evaluator.evaluate()
-        self.throw_resalts.emit(results)
+        self.throw_results.emit(results)
 
 # %%
