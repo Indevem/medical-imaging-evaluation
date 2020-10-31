@@ -15,18 +15,11 @@
 Создание объекта модели: `model = Evaluator()`.
 Обучение модели: `model.fit(predicted, expert)`, где `predicted` -- оцениваемая разметка, `expert` -- правильная разметка, ожидаемые тип данных: `np.ndarray`.
 Получение значения метрик для всех объектов выборки: `model.evaluate()`.
-Другие методы:
-- `best_metrics(k=-1)` 
-- `worst_metrics(k=-1)`
 
 ## О решении
 Для поиска различий между автоматической и экспертной разметками применяются метрики:
 
 Алгоритм оценки разметки:
 
-### Данные
-- Предоставленный организаторами хакатона датасет.
-- The Cancer Imaging Archive
-
 ### Литература
-- https://github.com/deepmind/surface-distance
+- Библиотека https://github.com/deepmind/surface-distance
