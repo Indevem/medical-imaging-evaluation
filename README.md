@@ -22,7 +22,7 @@
 ## О решении
 Для поиска различий между автоматической и экспертной разметками применяются метрики:
 - Standard surface distance
-<img src="https://latex.codecogs.com/png.latex?\dpi{400}\int&space;\frac{1}{x}&space;dx&space;=&space;\ln&space;\left|&space;x&space;\right|&space;+&space;C" /> 
+<img src="https://latex.codecogs.com/png.latex?\dpi{100}\int&space;\frac{1}{x}&space;dx&space;=&space;\ln&space;\left|&space;x&space;\right|&space;+&space;C" /> 
 
 - Symmetric surface distance
 ```math
