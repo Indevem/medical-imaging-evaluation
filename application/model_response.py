@@ -1,8 +1,10 @@
 # %%
-from PyQt5.QtCore import QThread, pyqtSignal
 import sys
-sys.path.append('..\\model')
+
 from evaluator import Evaluator
+from PyQt5.QtCore import QThread, pyqtSignal
+
+sys.path.append('..\\model')
 
 # %%
 class ModelResponse(QThread):

@@ -1,7 +1,8 @@
+from dataclasses import dataclass
+from typing import Callable, Dict, List
+
 import numpy as np
 import pandas as pd
-from typing import List, Callable, Dict
-from dataclasses import dataclass
 from scipy.spatial import distance
 
 FILENAME_COL = 'file_name'

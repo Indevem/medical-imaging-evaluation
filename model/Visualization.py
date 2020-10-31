@@ -1,9 +1,9 @@
 %matplotlib inline
 from pathlib import Path
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 
+import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import numpy as np
 
 fig, axs = plt.subplots(5, 4, figsize=(50,50))
 
