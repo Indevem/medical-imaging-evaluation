@@ -18,11 +18,11 @@ FILE_FORMAT = '.png'
 class Shape:
     x: float
     y: float
-    
+
     # actually, half a width/height
     width: float
     height: float
-        
+
     shape: str
 
     @property
@@ -44,9 +44,9 @@ class Shape:
 def get_aggregated_min_center_distance(shapes_from: List[Shape], shapes_to: List[Shape],
                                        distance_function: Callable = distance.euclidean,
                                        aggregation_function: Callable = np.mean) -> float:
-    if len(shape_from) == 0 and len(shape_to) == 0:
+    if len(shapes_from) == 0 and len(shapes_to) == 0:
         return 0
-    if len(shape_from) == 0 or len(shape_to) == 0:
+    if len(shapes_from) == 0 or len(shapes_to) == 0:
         return np.NaN
 
     return aggregation_function(
@@ -55,18 +55,18 @@ def get_aggregated_min_center_distance(shapes_from: List[Shape], shapes_to: List
 
 
 def get_rectangle_area_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> float:
-    if len(shape_from) == 0 and len(shape_to) == 0:
+    if len(shapes_1) == 0 and len(shapes_2) == 0:
         return 0
-    if len(shape_from) == 0 or len(shape_to) == 0:
+    if len(shapes_1) == 0 or len(shapes_2) == 0:
         return np.NaN
 
     return sum(i.area for i in shapes_1) / sum(i.area for i in shapes_2)
 
 
 def get_shapes_count_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> float:
-    if len(shape_from) == 0 and len(shape_to) == 0:
+    if len(shapes_1) == 0 and len(shapes_2) == 0:
         return 0
-    if len(shape_from) == 0 or len(shape_to) == 0:
+    if len(shapes_1) == 0 or len(shapes_2) == 0:
         return np.NaN
 
     return len(shapes_1) / len(shapes_2)
@@ -106,7 +106,12 @@ class TableMetricsCalculator:
 
         #     metrics['shape_count_1'] = len(first_shapes)
         #     metrics['shape_count_2'] = len(second_shapes)
-        metrics['shape_count_ratio'] = len(first_shapes) / len(second_shapes)
+        if len(first_shapes) == 0 and len(second_shapes) == 0:
+            metrics['shape_count_ratio'] = 1
+        elif len(second_shapes) == 0:
+            metrics['shape_count_ratio'] = np.NaN
+        else:
+            metrics['shape_count_ratio'] = len(first_shapes) / len(second_shapes)
         metrics['rectangle_area_ratio'] = get_rectangle_area_ratio(first_shapes, second_shapes)
         return metrics
 
