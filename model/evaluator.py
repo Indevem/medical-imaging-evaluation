@@ -30,7 +30,7 @@ class RoundClassifier(BaseEstimator, ClassifierMixin):
         if self.round_model:
             pred = np.round(pred, 0).astype(int)
         return pred
-        
+
 
 class Evaluator:
 
