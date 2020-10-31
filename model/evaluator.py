@@ -1,13 +1,13 @@
+import typing as tp
+
 import cv2
 import joblib
 import numpy as np
 import pandas as pd
-import typing as tp
-
 from sklearn.base import BaseEstimator, ClassifierMixin
+from sklearn.ensemble import RandomForestRegressor, VotingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestRegressor, VotingClassifier
 from sklearn.svm import SVC
 
 from model.metrics.metrics_wrapper import Metrics
@@ -30,7 +30,7 @@ class RoundClassifier(BaseEstimator, ClassifierMixin):
         if self.round_model:
             pred = np.round(pred, 0).astype(int)
         return pred
-
+        
 
 class Evaluator:
 
@@ -49,6 +49,7 @@ class Evaluator:
         result.append(ex.sum() / 255)
         result.append(pred.sum() / 255)
 
+        # обработка случаев, когда на одной или обеих разметках нет выделенных областей
         if ex.sum() == 0 and pred.sum() == 0:
             return result + [0] * num_metrics
         elif ex.sum() == 0 or pred.sum() == 0:
