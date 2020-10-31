@@ -18,7 +18,7 @@ from __future__ import absolute_import, division, print_function
 import numpy as np
 from scipy import ndimage
 
-from model.metrics import lookup_tables
+from metrics import lookup_tables
 
 
 def _assert_is_numpy_array(name, array):
