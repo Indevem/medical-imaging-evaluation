@@ -3,7 +3,11 @@ from os.path import join
 import cv2
 import numpy as np
 
+<<<<<<< HEAD
 import metrics_processor
+=======
+from metrics import metrics_processor
+>>>>>>> c67ce97089f537ebcc52a079534ebc027051f2af
 
 
 class Metrics:
