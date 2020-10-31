@@ -1,10 +1,9 @@
 from os.path import join
 
 import cv2
+import numpy as np
 
 from model.metrics import metrics_processor
-
-import numpy as np
 
 
 class Metrics:
