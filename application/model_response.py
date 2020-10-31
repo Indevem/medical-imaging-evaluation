@@ -1,7 +1,7 @@
 # %%
 import sys
 
-from model.evaluator import Evaluator
+from model.evaluator import Evaluator, RoundClassifier
 from PyQt5.QtCore import QThread, pyqtSignal
 
 # %%

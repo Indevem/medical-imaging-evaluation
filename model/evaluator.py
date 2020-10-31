@@ -13,25 +13,6 @@ from sklearn.svm import SVC
 from metrics.metrics_wrapper import Metrics
 
 
-# class RoundClassifier(BaseEstimator, ClassifierMixin):
-#     """
-#     Округление предсказаний модели до целых чисел.
-#     """
-#     def __init__(self, model, round_model=True):
-#         self.model = model
-#         self.round_model = round_model
-#
-#     def fit(self, X, y):
-#         self.model.fit(X, y)
-#         return self
-#
-#     def predict(self, X):
-#         pred = self.model.predict(X)
-#         if self.round_model:
-#             pred = np.round(pred, 0).astype(int)
-#         return pred
-
-
 class RoundClassifier(BaseEstimator, ClassifierMixin):
     """
     Округление предсказаний модели до целых чисел.
