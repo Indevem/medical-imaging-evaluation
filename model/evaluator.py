@@ -24,7 +24,7 @@ class Evaluator:
                  data: tp.List[np.ndarray] = None) -> None:
         pass
 
-    def evaluate(self, metrics: tp.List[str] = []) -> tp.Dict[str, np.ndarray]:
+    def evaluate(self, metrics: tp.List[str] = []):# -> tp.List[int]:
 
         #return {'metric1': np.zeros(len(predicted)), 'metric2': np.array(list(range(len(predicted))))}
-        return {'metric1': np.zeros(5), 'metric2': np.array(list(range(5)))}
+        return {[1, 2, 3, 4]}
