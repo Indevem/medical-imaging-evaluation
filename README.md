@@ -27,9 +27,10 @@
 </p>
 
 - Symmetric surface distance
-```math
-AvSD=\frac{1}{|X|+|Y|}\left(\sum_{x\in X}D_Y(x)+\sum_{y\in Y}D_X(y)\right)=\frac{|Y|AvD_Y(X, Y)+|X|AvD(Y, X)}{|X|+|Y|}
-```
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.latex?AvSD=\frac{1}{|X|+|Y|}\left(\sum_{x\in%20X}D_Y(x)+\sum_{y\in%20Y}D_X(y)\right)=\frac{|Y|AvD_Y(X,%20Y)+|X|AvD(Y,%20X)}{|X|+|Y|}" /> 
+</p>
+
 - Volume overlap error
 ```math
 VOE=100\times\left(1-\frac{|X\cap Y|}{|X|+|Y|}\right)
