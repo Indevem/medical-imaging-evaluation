@@ -45,7 +45,8 @@ def get_aggregated_min_center_distance(shapes_from: List[Shape], shapes_to: List
                                        aggregation_function: Callable = np.mean) -> float:
     """Для каждой фигуры из shapes_from вычисляет расстояние по заданной метрике distance_function
     до ближайшей по этой метрике фигуры в shapes_to
-    и агрегирует полученные значения с помощью aggregation_function"""
+    и агрегирует полученные значения с помощью aggregation_function
+    """
 
     if len(shapes_from) == 0 and len(shapes_to) == 0:
         return 0
@@ -58,7 +59,8 @@ def get_aggregated_min_center_distance(shapes_from: List[Shape], shapes_to: List
 
 
 def get_rectangle_area_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> float:
-    """Вычисляет соотношение площадей двух наборов фигур"""
+    """Вычисляет соотношение площадей двух наборов фигур
+    """
 
     if len(shapes_1) == 0 and len(shapes_2) == 0:
         return 1
@@ -69,7 +71,8 @@ def get_rectangle_area_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> fl
 
 
 def get_shapes_count_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> float:
-    """Вычисляет соотношение количества фигур в двух наборах фигур"""
+    """Вычисляет соотношение количества фигур в двух наборах фигур
+    """
 
     if len(shapes_1) == 0 and len(shapes_2) == 0:
         return 1
@@ -80,7 +83,8 @@ def get_shapes_count_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> floa
 
 
 class TableMetricsCalculator:
-    """Класс для получения данных и вычисления метрик из таблицы с координатами фигур"""
+    """Класс для получения данных и вычисления метрик из таблицы с координатами фигур
+    """
 
     def __init__(self, path: str):
         self.rect_data = pd.read_csv(path)
@@ -89,7 +93,8 @@ class TableMetricsCalculator:
                                           user_name_2: str) -> Dict[str, float]:
 
         """Вычисляет набор метрик на размеченных двумя разными
-        источниками изображениях из табличных данных"""
+        источниками изображениях из табличных данных
+        """
 
         image_name = image_name.strip(FILE_FORMAT)
 
@@ -124,7 +129,8 @@ class TableMetricsCalculator:
         return metrics
 
     def get_coordinates_of_shapes_for_image(self, image_name: str, user_name: str) -> List[Dict[str, float]]:
-        """Возвращает параметры размеченных выбранным источником фигур для указанного изображения"""
+        """Возвращает параметры размеченных выбранным источником фигур для указанного изображения
+        """
         image_name = image_name.strip(FILE_FORMAT)
 
         data = self.rect_data[self.rect_data[FILENAME_COL] == image_name]
