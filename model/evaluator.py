@@ -4,12 +4,12 @@ import typing as tp
 
 class Evaluator:
 
-    metrics = {
-        'standard_avg': standard_distance_avg, 'standard_max': standard_distance_max,
-        'symmetric_avg': symmetric_distance_avg, 'symmetric_max': symmetric_distance_max,
-        'voe': volume_overlap_error, 'rvd': relative_volume_difference,
-        'dice': dice_coefficient, 'hausdorff': hausdorff_distance
-    }
+    #metrics = {
+     #   'standard_avg': standard_distance_avg, 'standard_max': standard_distance_max,
+     #   'symmetric_avg': symmetric_distance_avg, 'symmetric_max': symmetric_distance_max,
+     #   'voe': volume_overlap_error, 'rvd': relative_volume_difference,
+     #   'dice': dice_coefficient, 'hausdorff': hausdorff_distance
+    #}
 
     def __init__(self):
         pass
@@ -26,4 +26,5 @@ class Evaluator:
 
     def evaluate(self, metrics: tp.List[str] = []) -> tp.Dict[str, np.ndarray]:
 
-        return {'metric1': np.zeros(len(predicted)), 'metric2': np.array(list(range(len(predicted))))}
+        #return {'metric1': np.zeros(len(predicted)), 'metric2': np.array(list(range(len(predicted))))}
+        return {'metric1': np.zeros(5), 'metric2': np.array(list(range(5)))}
