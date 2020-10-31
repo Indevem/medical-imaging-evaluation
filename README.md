@@ -22,9 +22,8 @@
 ## О решении
 Для поиска различий между автоматической и экспертной разметками применяются метрики:
 - Standard surface distance
-```math
-AvD=\frac{1}{Y}\sum_{y\in Y}D_X(y)$$
-```
+<img src="https://latex.codecogs.com/png.latex?\dpi{400}\int&space;\frac{1}{x}&space;dx&space;=&space;\ln&space;\left|&space;x&space;\right|&space;+&space;C" /> 
+
 - Symmetric surface distance
 ```math
 AvSD=\frac{1}{|X|+|Y|}\left(\sum_{x\in X}D_Y(x)+\sum_{y\in Y}D_X(y)\right)=\frac{|Y|AvD_Y(X, Y)+|X|AvD(Y, X)}{|X|+|Y|}
