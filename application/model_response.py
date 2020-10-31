@@ -1,8 +1,10 @@
 # %%
-from PyQt5.QtCore import QThread, pyqtSignal
 import sys
-sys.path.append('..\\model')
+
 from evaluator import Evaluator
+from PyQt5.QtCore import QThread, pyqtSignal
+
+sys.path.append('..\\model')
 
 # %%
 class ModelResponse(QThread):
@@ -13,7 +15,7 @@ class ModelResponse(QThread):
     для выполнения в отдельный поток.
     
     """
-    TR = pyqtSignal(dict, name = "throw_resalts")
+    TR = pyqtSignal(dict, name="throw_results")
     
     def __init__(self, list1, list2):
         """Конструктор класса. 
@@ -34,7 +36,7 @@ class ModelResponse(QThread):
         """
         evaluator = Evaluator()   
         evaluator.fit(self.list1, self.list2)
-        resalts = evaluator.evaluate()
-        self.throw_resalts.emit(resalts)
+        results = evaluator.evaluate()
+        self.throw_results.emit(results)
 
 # %%

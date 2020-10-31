@@ -13,13 +13,12 @@
 # limitations under the License.
 """Module exposing surface distance based measures."""
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
-from model.metrics import lookup_tables
 import numpy as np
 from scipy import ndimage
+
+from model.metrics import lookup_tables
 
 
 def _assert_is_numpy_array(name, array):

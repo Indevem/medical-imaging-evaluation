@@ -1,7 +1,8 @@
+from dataclasses import dataclass
+from typing import Callable, Dict, List
+
 import numpy as np
 import pandas as pd
-from typing import List, Callable, Dict
-from dataclasses import dataclass
 from scipy.spatial import distance
 
 FILENAME_COL = 'file_name'
@@ -39,11 +40,14 @@ class Shape:
         return self.width * self.height * 4
 
 
-# for each shape on the first image, calculates distance to the nearest shape on the other image
-# then aggregates it
 def get_aggregated_min_center_distance(shapes_from: List[Shape], shapes_to: List[Shape],
                                        distance_function: Callable = distance.euclidean,
                                        aggregation_function: Callable = np.mean) -> float:
+    """Для каждой фигуры из shapes_from вычисляет расстояние по заданной метрике distance_function
+    до ближайшей по этой метрике фигуры в shapes_to
+    и агрегирует полученные значения с помощью aggregation_function
+    """
+
     if len(shapes_from) == 0 and len(shapes_to) == 0:
         return 0
     if len(shapes_from) == 0 or len(shapes_to) == 0:
@@ -55,8 +59,11 @@ def get_aggregated_min_center_distance(shapes_from: List[Shape], shapes_to: List
 
 
 def get_rectangle_area_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> float:
+    """Вычисляет соотношение площадей двух наборов фигур
+    """
+
     if len(shapes_1) == 0 and len(shapes_2) == 0:
-        return 0
+        return 1
     if len(shapes_1) == 0 or len(shapes_2) == 0:
         return np.NaN
 
@@ -64,8 +71,11 @@ def get_rectangle_area_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> fl
 
 
 def get_shapes_count_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> float:
+    """Вычисляет соотношение количества фигур в двух наборах фигур
+    """
+
     if len(shapes_1) == 0 and len(shapes_2) == 0:
-        return 0
+        return 1
     if len(shapes_1) == 0 or len(shapes_2) == 0:
         return np.NaN
 
@@ -73,11 +83,19 @@ def get_shapes_count_ratio(shapes_1: List[Shape], shapes_2: List[Shape]) -> floa
 
 
 class TableMetricsCalculator:
-    def __init__(self, path):
+    """Класс для получения данных и вычисления метрик из таблицы с координатами фигур
+    """
+
+    def __init__(self, path: str):
         self.rect_data = pd.read_csv(path)
 
     def calc_table_metrics_for_image_pair(self, image_name: str, user_name_1: str,
                                           user_name_2: str) -> Dict[str, float]:
+
+        """Вычисляет набор метрик на размеченных двумя разными
+        источниками изображениях из табличных данных
+        """
+
         image_name = image_name.strip(FILE_FORMAT)
 
         data = self.rect_data[self.rect_data[FILENAME_COL] == image_name]
@@ -89,6 +107,7 @@ class TableMetricsCalculator:
 
         metrics = {}
 
+        # различные расстояния между фигурами
         for aggregation_function in (np.median, np.mean, np.min, np.max):
             prefix = '{}_min_center_distance_'.format(aggregation_function.__name__)
             metrics.update({
@@ -104,18 +123,14 @@ class TableMetricsCalculator:
                                                                        aggregation_function=aggregation_function),
             })
 
-        #     metrics['shape_count_1'] = len(first_shapes)
-        #     metrics['shape_count_2'] = len(second_shapes)
-        if len(first_shapes) == 0 and len(second_shapes) == 0:
-            metrics['shape_count_ratio'] = 1
-        elif len(second_shapes) == 0:
-            metrics['shape_count_ratio'] = np.NaN
-        else:
-            metrics['shape_count_ratio'] = len(first_shapes) / len(second_shapes)
+
+        metrics['shape_count_ratio'] = get_shapes_count_ratio(first_shapes, second_shapes)
         metrics['rectangle_area_ratio'] = get_rectangle_area_ratio(first_shapes, second_shapes)
         return metrics
 
     def get_coordinates_of_shapes_for_image(self, image_name: str, user_name: str) -> List[Dict[str, float]]:
+        """Возвращает параметры размеченных выбранным источником фигур для указанного изображения
+        """
         image_name = image_name.strip(FILE_FORMAT)
 
         data = self.rect_data[self.rect_data[FILENAME_COL] == image_name]
