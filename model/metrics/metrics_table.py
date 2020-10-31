@@ -18,8 +18,11 @@ FILE_FORMAT = '.png'
 class Shape:
     x: float
     y: float
+    
+    # actually, half a width/height
     width: float
     height: float
+        
     shape: str
 
     @property
