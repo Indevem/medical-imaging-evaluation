@@ -43,7 +43,7 @@
 
 - Dice coefficient
 <p align="center">
-  <img src="https://latex.codecogs.com/svg.latex?\frac{2|X\cap%20Y|}{|X|+|Y|}" /> 
+  <img src="https://latex.codecogs.com/svg.latex?DICE%20=%20\frac{2|X\cap%20Y|}{|X|+|Y|}" /> 
 </p>
 
 - Метрика Хаусдорфа
