@@ -36,7 +36,7 @@ class ModelResponse(QThread):
         """
         evaluator = Evaluator()   
         evaluator.fit(self.list1, self.list2)
-        resalts = evaluator.evaluate()
-        self.throw_resalts.emit(resalts)
+        results = evaluator.evaluate()
+        self.throw_resalts.emit(results)
 
 # %%
