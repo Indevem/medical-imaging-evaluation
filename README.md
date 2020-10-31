@@ -22,7 +22,7 @@
 ## О решении
 Для поиска различий между автоматической и экспертной разметками применяются метрики:
 - Standard surface distance
-<img src="https://latex.codecogs.com/svg.latex?AvD=\frac{1}{Y}\sum_{y\in%20Y}D_X(y)" /> 
+<img align="center" src="https://latex.codecogs.com/svg.latex?AvD=\frac{1}{Y}\sum_{y\in%20Y}D_X(y)" /> 
 
 - Symmetric surface distance
 ```math
