@@ -12,7 +12,7 @@ from sklearn.svm import SVC
 
 from metrics.metrics_wrapper import Metrics
 
-<<<<<<< HEAD
+
 # class RoundClassifier(BaseEstimator, ClassifierMixin):
 #     """
 #     Округление предсказаний модели до целых чисел.
@@ -30,7 +30,7 @@ from metrics.metrics_wrapper import Metrics
 #         if self.round_model:
 #             pred = np.round(pred, 0).astype(int)
 #         return pred
-=======
+
 
 class RoundClassifier(BaseEstimator, ClassifierMixin):
     """
@@ -49,7 +49,7 @@ class RoundClassifier(BaseEstimator, ClassifierMixin):
         if self.round_model:
             pred = np.round(pred, 0).astype(int)
         return pred
->>>>>>> c67ce97089f537ebcc52a079534ebc027051f2af
+
 
 
 class Evaluator:
