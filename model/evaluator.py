@@ -48,6 +48,7 @@ class Evaluator:
         result.append(ex.sum() / 255)
         result.append(pred.sum() / 255)
 
+        # обработка случаев, когда на одной или обеих разметках нет выделенных областей
         if ex.sum() == 0 and pred.sum() == 0:
             return result + [0] * num_metrics
         elif ex.sum() == 0 or pred.sum() == 0:
