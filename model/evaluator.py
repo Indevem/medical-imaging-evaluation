@@ -13,32 +13,32 @@ from sklearn.svm import SVC
 from model.metrics.metrics_wrapper import Metrics
 
 
-# class RoundClassifier(BaseEstimator, ClassifierMixin):
-#     """
-#     Округление предсказаний модели до целых чисел.
-#     """
-#     def __init__(self, model, round_model=True):
-#         self.model = model
-#         self.round_model = round_model
-#
-#     def fit(self, X, y):
-#         self.model.fit(X, y)
-#         return self
-#
-#     def predict(self, X):
-#         pred = self.model.predict(X)
-#         if self.round_model:
-#             pred = np.round(pred, 0).astype(int)
-#         return pred
+class RoundClassifier(BaseEstimator, ClassifierMixin):
+    """
+    Округление предсказаний модели до целых чисел.
+    """
+    def __init__(self, model, round_model=True):
+        self.model = model
+        self.round_model = round_model
+
+    def fit(self, X, y):
+        self.model.fit(X, y)
+        return self
+
+    def predict(self, X):
+        pred = self.model.predict(X)
+        if self.round_model:
+            pred = np.round(pred, 0).astype(int)
+        return pred
 
 
 class Evaluator:
 
     def __init__(self):
-        self.scaler = joblib.load('scaler_dump.pkl')
-        self.model = joblib.load('model_dump.pkl')
+        self.scaler = joblib.load('model/scaler_dump.pkl')
+        self.model = joblib.load('model/model_dump.pkl')
 
-    def _compute_metrics(ex, pred):
+    def _compute_metrics(self, ex, pred):
         """
         Подсчёт значения метрик для двух изображений -- экспертной и оцениваемой разметок.
         Метрики: на основе расстояний, на основе объёма множеств и на основе расположения геометрических фигур (опционально).
@@ -77,4 +77,4 @@ class Evaluator:
     def evaluate(self, metrics: tp.List[str] = []) -> np.ndarray:
         X = self._make_dataframe().fillna(-1).to_numpy()
         X = self.scaler.transform(X)
-        return model.predict(X)
+        return self.model.predict(X)
