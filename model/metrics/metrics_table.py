@@ -90,3 +90,13 @@ class TableMetricsCalculator:
         metrics['shape_count_ratio'] = len(first_shapes) / len(second_shapes)
         metrics['rectangle_area_ratio'] = get_rectangle_area_ratio(first_shapes, second_shapes)
         return metrics
+
+    def get_coordinates_of_shapes_for_image(self, image_name: str, user_name: str) -> List[Dict[str, float]]:
+        image_name = image_name.strip(FILE_FORMAT)
+
+        data = self.rect_data[self.rect_data[FILENAME_COL] == image_name]
+        data = data[data[USERNAME_COL] == user_name]
+
+        shapes = [Shape(*i[3:-1]) for i in data.itertuples()]
+
+        return [i.__dict__ for i in shapes]
