@@ -22,25 +22,25 @@
 ## О решении
 Для поиска различий между автоматической и экспертной разметками применяются метрики:
 - Standard surface distance
-
-$$AvD=\frac{1}{Y}\sum_{y\in Y}D_X(y)$$
-
+```math
+AvD=\frac{1}{Y}\sum_{y\in Y}D_X(y)$$
+```
 - Symmetric surface distance
-
-$$AvSD=\frac{1}{|X|+|Y|}\left(\sum_{x\in X}D_Y(x)+\sum_{y\in Y}D_X(y)\right)=\frac{|Y|AvD_Y(X, Y)+|X|AvD(Y, X)}{|X|+|Y|}$$
-
+```math
+AvSD=\frac{1}{|X|+|Y|}\left(\sum_{x\in X}D_Y(x)+\sum_{y\in Y}D_X(y)\right)=\frac{|Y|AvD_Y(X, Y)+|X|AvD(Y, X)}{|X|+|Y|}
+```
 - Volume overlap error
-
-$$VOE=100\times\left(1-\frac{|X\cap Y|}{|X|+|Y|}\right)$$
-
+```math
+VOE=100\times\left(1-\frac{|X\cap Y|}{|X|+|Y|}\right)
+```
 - Relative volume difference
-
-$$RVD = 100\times{|X|-|Y|}{|Y|}$$
-
+```math
+RVD = 100\times{|X|-|Y|}{|Y|}
+```
 - Dice coefficient
-
-$$DICE = \frac{2|X\cap Y|}{|X|+|Y|}$$
-
+```math
+DICE = \frac{2|X\cap Y|}{|X|+|Y|}
+```
 - Метрика Хаусдорфа
 
 и их модификации.
