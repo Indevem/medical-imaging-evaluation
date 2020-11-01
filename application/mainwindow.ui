@@ -17,7 +17,7 @@
    <widget class="QTableView" name="resalts_table">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>330</x>
       <y>140</y>
       <width>350</width>
       <height>98</height>
@@ -49,6 +49,8 @@
      <font>
       <family>Arial</family>
       <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -68,6 +70,8 @@
      <font>
       <family>Arial</family>
       <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -113,10 +117,12 @@
      <font>
       <family>Arial</family>
       <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Обзор</string>
+     <string>ОБЗОР</string>
     </property>
    </widget>
    <widget class="QPushButton" name="explore_path_expert">
@@ -138,10 +144,12 @@
      <font>
       <family>Arial</family>
       <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Обзор</string>
+     <string>ОБЗОР</string>
     </property>
    </widget>
    <widget class="QPushButton" name="evaluate_button">
@@ -163,10 +171,12 @@
      <font>
       <family>Arial</family>
       <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Оценить разметку</string>
+     <string>ОЦЕНИТЬ РАЗМЕТКУ</string>
     </property>
    </widget>
    <widget class="QPushButton" name="save_to_xls">
@@ -182,10 +192,12 @@
      <font>
       <family>Arial</family>
       <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Сохранить</string>
+     <string>СОХРАНИТЬ</string>
     </property>
    </widget>
   </widget>

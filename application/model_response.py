@@ -2,6 +2,7 @@
 import sys
 
 from model.evaluator import Evaluator, RoundClassifier
+import numpy as np
 from PyQt5.QtCore import QThread, pyqtSignal
 
 # %%
@@ -13,7 +14,7 @@ class ModelResponse(QThread):
     для выполнения в отдельный поток.
     
     """
-    TR = pyqtSignal(dict, name="throw_results")
+    throw_resalts = pyqtSignal(np.ndarray)
     
     def __init__(self, list1, list2):
         """Конструктор класса. 
@@ -35,6 +36,6 @@ class ModelResponse(QThread):
         evaluator = Evaluator()   
         evaluator.fit(self.list1, self.list2)
         results = evaluator.evaluate()
-        self.throw_results.emit(results)
+        self.throw_resalts.emit(results)
 
 # %%
