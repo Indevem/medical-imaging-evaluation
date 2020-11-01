@@ -46,7 +46,10 @@
   <img src="https://latex.codecogs.com/svg.latex?DICE%20=%20\frac{2|X\cap%20Y|}{|X|+|Y|}" /> 
 </p>
 
-- Метрика Хаусдорфа
+- Hausdorff distance
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.latex?D=\max\{\max_{x\in%20X}\min_{y\in%20Y}d(x,%20y),%20\max_{y\in%20Y}\min_{x\in%20X}d(x,%20y)\}" /> 
+</p>
 
 и их модификации.
 
