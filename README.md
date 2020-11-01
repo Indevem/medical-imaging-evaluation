@@ -64,5 +64,5 @@
 - SergioVera, DeboraGil и др. “Medial structure generation for registration of anatomical structures”, Skeletonization, Chapter 11 (2017)
 - Ramprasaath R. Selvaraju и др. “Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization”, IEEE (2017).
 - R. Padilla, S. L. Netto и E. A. B. da Silva, "A Survey on Performance Metrics for Object-Detection Algorithms", IWSSIP (2020)
-Dinu Dragan, и Dragan Vojo Ivetic, “Region Marking Software Tool for Medical Images”, eTELEMED (2012)
+- Dinu Dragan, и Dragan Vojo Ivetic, “Region Marking Software Tool for Medical Images”, eTELEMED (2012)
 - Реализация метрик https://github.com/deepmind/surface-distance
